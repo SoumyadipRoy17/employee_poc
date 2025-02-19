@@ -1,5 +1,5 @@
-import { Link, Outlet } from 'react-router-dom'
-import { UserCircleIcon } from '@heroicons/react/24/outline'
+import { Link, Outlet } from "react-router-dom";
+import { UserCircleIcon } from "@heroicons/react/24/outline";
 
 function Layout({ onLogout }) {
   return (
@@ -9,7 +9,7 @@ function Layout({ onLogout }) {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-xl font-bold text-indigo-600">EMS PoC</h1>
+                <h1 className="text-xl font-bold text-indigo-600">EMS</h1>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
@@ -49,7 +49,7 @@ function Layout({ onLogout }) {
         <Outlet />
       </main>
     </div>
-  )
+  );
 }
 
-export default Layout
+export default Layout;
