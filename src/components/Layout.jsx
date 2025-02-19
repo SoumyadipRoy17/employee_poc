@@ -9,7 +9,7 @@ function Layout({ onLogout }) {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <h1 className="text-xl font-bold text-indigo-600">EMS</h1>
+                <h1 className="text-xl font-bold text-indigo-600">EMS PoC</h1>
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
@@ -29,6 +29,12 @@ function Layout({ onLogout }) {
                   className="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-indigo-500"
                 >
                   Add Employee
+                </Link>
+                <Link
+                  to="/attendance"
+                  className="text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 border-transparent hover:border-indigo-500"
+                >
+                  Attendance
                 </Link>
               </div>
             </div>
