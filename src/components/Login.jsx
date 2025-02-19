@@ -1,32 +1,32 @@
-import { useState } from 'react'
-import { toast } from 'react-hot-toast'
+import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 function Login({ onLogin }) {
   const [formData, setFormData] = useState({
-    username: '',
-    password: '',
-  })
+    username: "",
+    password: "",
+  });
 
   const handleSubmit = (e) => {
-    e.preventDefault()
-    
-    if (formData.password.split(' ').length < 4) {
-      toast.error('Password must contain at least 4 words')
-      return
+    e.preventDefault();
+
+    if (formData.password.length < 4) {
+      toast.error("Password must contain at least 4 words");
+      return;
     }
 
     // In a real app, you would validate credentials against a backend
-    onLogin()
-    toast.success('Successfully logged in!')
-  }
+    onLogin();
+    toast.success("Successfully logged in!");
+  };
 
   const handleChange = (e) => {
-    const { name, value } = e.target
-    setFormData(prevState => ({
+    const { name, value } = e.target;
+    setFormData((prevState) => ({
       ...prevState,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -40,7 +40,10 @@ function Login({ onLogin }) {
         <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
           <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
-              <label htmlFor="username" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="username"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Username
               </label>
               <div className="mt-1">
@@ -57,7 +60,10 @@ function Login({ onLogin }) {
             </div>
 
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-gray-700">
+              <label
+                htmlFor="password"
+                className="block text-sm font-medium text-gray-700"
+              >
                 Password
               </label>
               <div className="mt-1">
@@ -88,7 +94,7 @@ function Login({ onLogin }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Login
+export default Login;
