@@ -1,47 +1,62 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import { useState } from 'react'
-import { Toaster } from 'react-hot-toast'
-import Dashboard from './components/Dashboard'
-import EmployeeList from './components/EmployeeList'
-import AddEmployee from './components/AddEmployee'
-import Login from './components/Login'
-import Layout from './components/Layout'
-import { employeesData } from './data/mockData'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useState } from "react";
+import { Toaster } from "react-hot-toast";
+import Dashboard from "./components/Dashboard";
+import EmployeeList from "./components/EmployeeList";
+import AddEmployee from "./components/AddEmployee";
+import AttendanceTracking from "./components/AttendanceTracking";
+import Login from "./components/Login";
+import Layout from "./components/Layout";
+import { employeesData } from "./data/mockData";
 
 function App() {
-  const [employees, setEmployees] = useState(employeesData)
-  const [isAuthenticated, setIsAuthenticated] = useState(false)
+  const [employees, setEmployees] = useState(employeesData);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   const addEmployee = (employee) => {
-    setEmployees([...employees, { ...employee, id: employees.length + 1 }])
-  }
+    setEmployees([...employees, { ...employee, id: employees.length + 1 }]);
+  };
 
   return (
     <>
       <Toaster position="top-right" />
       <Routes>
-        <Route 
-          path="/login" 
+        <Route
+          path="/login"
           element={
-            isAuthenticated ? 
-            <Navigate to="/" replace /> : 
-            <Login onLogin={() => setIsAuthenticated(true)} />
-          } 
+            isAuthenticated ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Login onLogin={() => setIsAuthenticated(true)} />
+            )
+          }
         />
         <Route
           element={
-            isAuthenticated ? 
-            <Layout onLogout={() => setIsAuthenticated(false)} /> : 
-            <Navigate to="/login" replace />
+            isAuthenticated ? (
+              <Layout onLogout={() => setIsAuthenticated(false)} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
           }
         >
           <Route path="/" element={<Dashboard employees={employees} />} />
-          <Route path="/employees" element={<EmployeeList employees={employees} />} />
-          <Route path="/add-employee" element={<AddEmployee onAdd={addEmployee} />} />
+          <Route
+            path="/employees"
+            element={<EmployeeList employees={employees} />}
+          />
+          <Route
+            path="/add-employee"
+            element={<AddEmployee onAdd={addEmployee} />}
+          />
+          <Route
+            path="/attendance"
+            element={<AttendanceTracking employees={employees} />}
+          />
         </Route>
       </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
